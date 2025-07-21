@@ -4,13 +4,13 @@
 
 RiskLens is a modular, GitHub-ready data analytics toolkit that flags high-risk loan accounts using only publicly available or bank-native signals—no direct income data or PII required.
 
-## 🚀 Key Features
+## Key Features
 - **Privacy-First:** No PII or income tracking—uses only signals banks already collect or publicly accessible proxies.
 - **Extensible & Practical:** Drop-in real data connectors; easy plugin of new proxy features.
 - **Clear, Modular Code:** Each stage (ETL, features, modeling, explainability) lives in its own folder—ideal for contributions.
 - **Demo-Ready:** Comes with a Jupyter notebook using LendingClub data and a live Streamlit app.
 
-## 🛠️ Core Pipeline & Components
+## Core Pipeline & Components
 - **Data Ingestion & Simulation:**
   - Public datasets (LendingClub, UCI Credit Card)
   - Modular connectors for bank logs, open-banking CSVs, telecom APIs
@@ -30,7 +30,7 @@ RiskLens is a modular, GitHub-ready data analytics toolkit that flags high-risk 
   - Configurable triggers (e.g., risk score > 0.7)
   - Auto-generate “next best action” suggestions
 
-## 📂 Project Structure
+## Project Structure
 ```
 RiskLens/
 │
@@ -73,17 +73,17 @@ RiskLens/
 └── setup.py
 ```
 
-## 🧩 Contributing
+## Contributing
 - Fork the repo and create a feature branch.
 - Add new connectors, features, or models as modular scripts.
 - Write tests for your code in the `tests/` folder.
 - Submit a pull request with a clear description.
 
-## 📈 Demo
+## Demo
 - Run the Jupyter notebook in `notebooks/` for a quick demo using public data.
 - Launch the Streamlit dashboard with `streamlit run dashboard/app.py`.
 
-## 📣 Community Hooks
+## Community Hooks
 - Add your region’s macro data adapter
 - Build a new proxy-signal plugin
 
