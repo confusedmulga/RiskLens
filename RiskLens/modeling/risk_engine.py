@@ -63,7 +63,7 @@ class RiskEngine:
 
         # --- 4. Behavioral & History ---
         cibil = profile.get("ext_cibil_score", 0)
-        if cibil > 750:
+        if cibil >= 750:
             score += 20
             drivers.append({"factor": "CIBIL Score", "impact": +20, "desc": "Excellent Credit Score"})
         elif cibil < 650:
@@ -106,10 +106,10 @@ class RiskEngine:
             max_limit = 0
         else:
             # Multiplier based on score
-            multiplier = score / 10  # e.g., Score 70 -> 7x monthly disposable
+            multiplier = max(1.0, score / 10)  # Ensure sensible range even for low scores
             rec_limit = disposable_income * multiplier
-            min_limit = disposable_income * 1
-            max_limit = disposable_income * (multiplier * 1.5)
+            min_limit = disposable_income
+            max_limit = max(min_limit, disposable_income * (multiplier * 1.5))
 
         return {
             "risk_score": int(score),

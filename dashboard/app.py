@@ -132,7 +132,7 @@ def render_input_screen():
         if uploaded_files:
             st.markdown("### Parsing Status")
             for f in uploaded_files:
-                success, msg = parse_bank_statement(f)
+                success, msg, _ = parse_bank_statement(f)
                 parsing_status[f.name] = success
                 if success:
                     st.success(f"✔ {f.name}: {msg}")
@@ -195,6 +195,12 @@ def render_input_screen():
                     time.sleep(0.5)
                 
                 # Prepare Profile Data
+                employer_type = (
+                    "Govt" if occupation == "Salaried - Govt"
+                    else "Self-Employed" if occupation in ["Business - Retail", "Business - Mfg", "Professional"]
+                    else "Private"
+                )
+
                 profile_data = {
                     "id_pan": pan,
                     "id_aadhaar": aadhaar,
@@ -213,7 +219,7 @@ def render_input_screen():
                     "fin_dependents": dependents,
                     
                     "emp_occupation": occupation,
-                    "emp_employer_type": emp_type, # Simplified mapping
+                    "emp_employer_type": employer_type,
                     "emp_tenure_years": tenure,
                     
                     "ext_cibil_score": cibil,
